@@ -7,9 +7,29 @@
 </head>
 <body>
 <div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
+    <h1>Users</h1>
+    <div class="row">
+        <div class="col-lg-3"> <a th:href="@{/users/new}" class="btn btn-primary btn-sm mb-3"> Add user</a> </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${users}">
+            <td th:text="${user.firstName}"/>
+            <td th:text="${user.lastName}"/>
+            <td th:text="${user.email}"/>
+            <td><a th:href="'/updateuser?id='+${user.id}">Update</a>
+            <td><a th:href="'/deleteUser?id='+${user.id}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
