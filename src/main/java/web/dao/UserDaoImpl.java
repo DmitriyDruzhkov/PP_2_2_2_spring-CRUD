@@ -17,12 +17,12 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void addUser(User user) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JPA");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
+//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("JPA");
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        entityManager.getTransaction().begin();
         entityManager.persist(user);
-        entityManager.getTransaction().commit();
-        entityManager.close();
+//        entityManager.getTransaction().commit();
+//        entityManager.close();
     }
 
     @Override

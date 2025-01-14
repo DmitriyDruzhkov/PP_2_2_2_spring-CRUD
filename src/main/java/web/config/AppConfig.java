@@ -1,5 +1,6 @@
 package web.config;
 
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -41,7 +42,7 @@ public class AppConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(getDataSource());
-        em.setPackagesToScan("web.model");
+        em.setPackagesToScan("web");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties props = new Properties();
@@ -58,5 +59,10 @@ public class AppConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
+    }
+
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
+        return new PersistenceExceptionTranslationPostProcessor();
     }
 }
